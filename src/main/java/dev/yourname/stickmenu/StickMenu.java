@@ -66,21 +66,21 @@ public class StickMenu extends JavaPlugin implements Listener {
         .title("Warp Menu")
         .content("Choose an warp:")
         .button("Spawn")
-        .button("Elytra")
         .button("Shops")
         .button("Games")
-        .button("XP")
         .button("PvP")
+        .button("Elytra")
+        .button("XP")
         .button("End Portal")
         .validResultHandler(response -> {
             int buttonId = response.clickedButtonId();
                 switch (buttonId) {
                     case 0 -> player.performCommand("warp spawn");
-                    case 1 -> player.performCommand("warp elytra");
-                    case 2 -> player.performCommand("warp shops");
-                    case 3 -> player.performCommand("warp games");
-                    case 4 -> player.performCommand("warp xp");
-                    case 5 -> player.performCommand("warp pvp");
+                    case 1 -> player.performCommand("warp shops");
+                    case 2 -> player.performCommand("warp games");
+                    case 3 -> player.performCommand("warp pvp");
+                    case 4 -> player.performCommand("warp elytra");
+                    case 5 -> player.performCommand("warp xp");
                     case 6 -> player.performCommand("warp portal");
                 }
         })
