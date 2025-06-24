@@ -36,20 +36,20 @@ public class StickMenu extends JavaPlugin implements Listener {
         if (item.getType() == Material.STICK && floodgateApi.isFloodgatePlayer(player.getUniqueId())) {
             event.setCancelled(true);
 
-            List<String> options = List.of("Teleport Requests", "Homes");
-
             SimpleForm form = SimpleForm.builder()
                 .title("Select Menu")
                 .content("Choose an option:")
                 .button("Teleport Requests")
                 .button("Homes")
                 .button("Add Home")
+                .button("Warps")
                 .validResultHandler(response -> {
                     int buttonId = response.clickedButtonId();
                         switch (buttonId) {
                             case 0 -> player.performCommand("tpa");
                             case 1 -> player.performCommand("homes");
                             case 2 -> player.performCommand("sethome");
+                            case 3 -> warpMenu(player);
                         }
                 })
                 .build();
@@ -57,4 +57,37 @@ public class StickMenu extends JavaPlugin implements Listener {
             floodgateApi.sendForm(player.getUniqueId(), form);
                         }
                     }
-                };
+
+
+
+
+    public void warpMenu(Player player){
+        SimpleForm warpForm = SimpleForm.builder()
+        .title("Warp Menu")
+        .content("Choose an warp:")
+        .button("Spawn")
+        .button("Elytra")
+        .button("Shops")
+        .button("Games")
+        .button("XP")
+        .button("PvP")
+        .button("End Portal")
+        .validResultHandler(response -> {
+            int buttonId = response.clickedButtonId();
+                switch (buttonId) {
+                    case 0 -> player.performCommand("warp spawn");
+                    case 1 -> player.performCommand("warp elytra");
+                    case 2 -> player.performCommand("warp shops");
+                    case 3 -> player.performCommand("warp games");
+                    case 4 -> player.performCommand("warp xp");
+                    case 5 -> player.performCommand("warp pvp");
+                    case 6 -> player.performCommand("warp portal");
+                }
+        })
+        .build();
+
+
+        floodgateApi.sendForm(player.getUniqueId(), warpForm);
+
+            }
+    };
