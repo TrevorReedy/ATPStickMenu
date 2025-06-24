@@ -43,11 +43,13 @@ public class StickMenu extends JavaPlugin implements Listener {
                 .content("Choose an option:")
                 .button("Teleport Requests")
                 .button("Homes")
+                .button("Add Home")
                 .validResultHandler(response -> {
                     int buttonId = response.clickedButtonId();
                         switch (buttonId) {
                             case 0 -> player.performCommand("tpa");
                             case 1 -> player.performCommand("homes");
+                            case 2 -> player.performCommand("sethome");
                         }
                 })
                 .build();
